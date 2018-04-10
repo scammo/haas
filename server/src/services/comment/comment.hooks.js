@@ -1,4 +1,4 @@
-import { populate } from "feathers-hooks-common";
+const { populate } = require("feathers-hooks-common");
 
 const schema = {
   include: [

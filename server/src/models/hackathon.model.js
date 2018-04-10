@@ -8,7 +8,7 @@ module.exports = function (app) {
   const hackathon = new Schema({
     name: { type: String, required: true },
     description: { type: String, required: false },
-    locations: { type: String, required: false },
+    location: { type: String, required: false },
     links: [{ type: String, required: false }],
     hashTag: { type: String, required: false },
     socialMedia: [{
@@ -16,6 +16,8 @@ module.exports = function (app) {
       link: { type: String, required: false },
     }],
     adminIds: [{ type: Schema.Types.ObjectId, ref: 'user', required: false }],
+    startDate: { type: Date, 'default': Date.now },
+    endDate: { type: Date, 'default': Date.now },
   }, {
     timestamps: true
   });
