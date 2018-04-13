@@ -27,12 +27,12 @@ export default new Router({
     },
     {
       path: '/hackathon/create',
-      name: 'hackathonEdit',
+      name: 'HackathonEdit',
       component: HackathonEdit
     },
     {
       path: '/hackathon/edit/:hackathonId',
-      name: 'hackathonCreate',
+      name: 'hackathonEdit',
       component: HackathonEdit
     }
   ]

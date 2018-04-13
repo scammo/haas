@@ -1,5 +1,7 @@
 <template>
   <div>
+    <notifications group="foo"/>
+
     <h3>Hackathon Verwalten</h3>
     <b-form-group
       id="hackathon.name"
@@ -39,6 +41,7 @@
     <v-select multiple v-model="hackathon.selected" :options="options"></v-select>
     <b-button @click="saveForm">Speichern</b-button>
     <br/><br/><br/><br/><br/>
+    <b-button @click="notifyTest">Notify</b-button>
 
   </div>
 </template>
@@ -68,6 +71,13 @@ export default {
     saveForm() {
       this.$store.dispatch('hackathon/create', this.hackathon).then((res) => {
         console.log(res);
+      })
+    },
+    notifyTest() {
+      this.$notify({
+        group: 'foo',
+        title: 'Hackathon Gespeichert',
+        text: 'Der neue Hackathon wurde erfolreich gespeichert'
       })
     }
   }
