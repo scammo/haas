@@ -33,8 +33,8 @@
     </b-form-group>
     <b-form-group
       id="hackathon.startDate"
-      description="Gib hier den Hashtag für des Hackathon an. Z.B. #rütüta"
-      label="HashTag für des Hackathons"
+      description="Flensburg, Berlin, Hamburg"
+      label="Wann fängt der Hackathon an?"
       label-for="hashTag">
       <datepicker  :format="'yyyy-MM-dd'" input-class="form-control" v-model="hackathon.startDate"></datepicker>
     </b-form-group>
@@ -64,11 +64,23 @@ export default {
       options: ['Javascript','PHP','Arduino', 'Raspberry Pi', 'Calliope']
     }
   },
+  mounted() {
+    console.log(this.$route.params.hackathonId);
+    this.$store.dispatch('hackathon/find', {'_id': this.$route.params.hackathonId }).then((res) => {
+      console.log(res)
+    });
+
+  },
   components: {
     Datepicker
   },
   methods: {
     saveForm() {
+      this.$notify({
+        group: 'foo',
+        title: 'Hackathon Gespeichert',
+        text: 'Der neue Hackathon wurde erfolreich gespeichert'
+      })
       this.$store.dispatch('hackathon/create', this.hackathon).then((res) => {
         console.log(res);
       })

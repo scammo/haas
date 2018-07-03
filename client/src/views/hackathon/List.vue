@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-list-group v-for="hackathon of hackathons" >
-      <b-list-group-item :to="{ path: 'hackathon/edit', query: { hackathonId: hackathon._id }}">
+      <b-list-group-item :to="(`/hackathon/edit/${hackathon._id}`)">
         <h3>
           {{hackathon.name}}
           <span class="pull-right">{{hackathon.hashTag}}</span>
@@ -24,10 +24,7 @@
 export default {
   name: 'List',
   mounted() {
-    this.$store.dispatch('/hackathon/find', {}).then((res) => {
-      console.log(res);
-      console.log('test');
-      console.log(this.$route.query.hackathonId)
+    this.$store.dispatch('hackathon/find', {}).then((res) => {
     });
 
   },
